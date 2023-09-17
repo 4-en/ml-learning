@@ -55,6 +55,12 @@ class Obstacle(PongObject):
         self.width = 0
         self.height = 0
 
+        self.vx = 0
+        self.vy = 0
+
+        self.ax = 0
+        self.ay = 0
+
     def tick(self, t):
         pass
 
@@ -110,7 +116,7 @@ class Pong:
 
         for obj in self.objects:
             obj.tick(self.time)
-            
+
     
     def reset(self):
         pass
