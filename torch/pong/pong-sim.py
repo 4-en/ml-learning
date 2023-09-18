@@ -70,6 +70,13 @@ class Obstacle(PongObject):
     def handleCollision(self, ball):
         pass
 
+    def reset(self):
+        self.vx = 0
+        self.vy = 0
+        self.ax = 0
+        self.ay = 0
+
+
 
 class Paddle(Obstacle):
     """
@@ -82,14 +89,29 @@ class Paddle(Obstacle):
         self.width = 0.04
         self.height = 0.2
 
+        self.score = 0
+
     def tick(self, t):
         pass
 
-    def checkCollision(self, ball):
+    def checkCollision(self, ball:Ball):
         pass
 
-    def handleCollision(self, ball):
+    def handleCollision(self, ball:Ball):
         pass
+
+    def up(self):
+        pass
+
+    def down(self):
+        pass
+
+    def reset(self):
+        self.score = 0
+        self.vx = 0
+        self.vy = 0
+        self.ax = 0
+        self.ay = 0
 
 
     
@@ -108,6 +130,7 @@ class Pong:
         self.paddle1 = Paddle(self)
         self.paddle2 = Paddle(self)
 
+
         self.objects = [self.ball, self.paddle1, self.paddle2]
 
 
@@ -119,5 +142,9 @@ class Pong:
 
     
     def reset(self):
-        pass
+        self.ball.reset()
+        self.paddle1.reset()
+        self.paddle2.reset()
+
+        self.time = 0
 
